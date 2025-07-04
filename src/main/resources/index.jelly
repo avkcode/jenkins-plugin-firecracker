@@ -1,0 +1,4 @@
+<?jelly escape-by-default='true'?>
+<div>
+  This plugin allows Jenkins to dynamically provision agents using Firecracker VMs.
+</div>

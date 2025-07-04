@@ -1,0 +1,24 @@
+FROM jenkins/jenkins:2.361.4-lts-jdk11
+
+USER root
+RUN apt-get update && \
+    apt-get install -y apt-transport-https \
+                       ca-certificates \
+                       curl \
+                       gnupg2 \
+                       software-properties-common
+
+# Install Maven
+RUN apt-get install -y maven
+
+# Install the plugin we're developing
+COPY target/firecracker-agent.hpi /usr/share/jenkins/ref/plugins/firecracker-agent.hpi
+
+# Skip initial setup
+ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
+
+# Install suggested plugins
+COPY jenkins-plugins.txt /usr/share/jenkins/ref/plugins.txt
+RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
+
+USER jenkins

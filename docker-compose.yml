@@ -1,0 +1,32 @@
+version: '3'
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    networks:
+      - jenkins-network
+
+  firecracker-host:
+    build:
+      context: .
+      dockerfile: Dockerfile.firecracker
+    privileged: true
+    volumes:
+      - /dev/kvm:/dev/kvm
+    networks:
+      - jenkins-network
+
+networks:
+  jenkins-network:
+    driver: bridge
+
+volumes:
+  jenkins_home:
