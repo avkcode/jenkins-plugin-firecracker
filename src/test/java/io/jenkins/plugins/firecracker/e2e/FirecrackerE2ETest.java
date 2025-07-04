@@ -94,7 +94,7 @@ public class FirecrackerE2ETest {
         assertEquals(Result.SUCCESS, build.getResult());
         
         // Verify the console output contains our expected message
-        String consoleOutput = jenkins.createWebClient().getPage(build, "console").asText();
+        String consoleOutput = jenkins.createWebClient().getPage(build, "console").getWebResponse().getContentAsString();
         assertTrue("Build output should contain our echo message", 
                 consoleOutput.contains("Hello from Firecracker agent"));
     }

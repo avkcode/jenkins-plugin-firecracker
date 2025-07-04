@@ -65,8 +65,8 @@ public class FirecrackerCloudIntegrationTest {
         Label nonMatchingLabel = Label.get("other-label");
         assertFalse(cloud.canProvision(nonMatchingLabel));
         
-        // Test with null label
-        assertTrue(cloud.canProvision(null));
+        // Test with null label (using the specific method)
+        assertTrue(cloud.canProvision((Label)null));
     }
 
     @Test

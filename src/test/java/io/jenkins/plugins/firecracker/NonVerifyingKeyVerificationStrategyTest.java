@@ -1,5 +1,6 @@
 package io.jenkins.plugins.firecracker;
 
+import hudson.model.Descriptor;
 import hudson.model.TaskListener;
 import hudson.plugins.sshslaves.verifiers.HostKey;
 import hudson.slaves.SlaveComputer;
@@ -64,8 +65,7 @@ public class NonVerifyingKeyVerificationStrategyTest {
     @Test
     public void testDescriptor() {
         // Get the descriptor
-        NonVerifyingKeyVerificationStrategy.DescriptorImpl descriptor = 
-                (NonVerifyingKeyVerificationStrategy.DescriptorImpl) strategy.getDescriptor();
+        Descriptor<?> descriptor = strategy.getDescriptor();
         
         // Verify the display name
         assertEquals("Non-verifying Strategy (Not secure, for testing only)", 

@@ -63,6 +63,12 @@
             <artifactId>aws-java-sdk-core</artifactId>
             <version>1.12.300</version>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.8.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     
     <repositories>
