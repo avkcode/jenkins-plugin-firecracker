@@ -38,7 +38,7 @@ public class FirecrackerE2ETest {
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         
         // Set up the VM mock with realistic behavior
         when(mockVM.getIpAddress()).thenReturn("192.168.122.100");

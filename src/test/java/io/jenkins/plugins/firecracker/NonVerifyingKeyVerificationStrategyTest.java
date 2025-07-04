@@ -26,7 +26,7 @@ public class NonVerifyingKeyVerificationStrategyTest {
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         strategy = new NonVerifyingKeyVerificationStrategy();
     }
 

@@ -31,7 +31,7 @@ public class FirecrackerAgentIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         
         // Set up the VM mock
         when(mockVM.getIpAddress()).thenReturn("192.168.122.100");
