@@ -59,36 +59,3 @@ mvn verify -Pintegration-tests
 ```bash
 mvn verify -Pe2e-tests
 ```
-
-## License
-
-This plugin is licensed under the MIT License.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Development Guidelines
-
-### Making Changes with SEARCH/REPLACE Blocks
-
-When submitting changes to this project, please use the following format for your pull requests:
-
-Every *SEARCH/REPLACE block* must use this format:
-1. The *FULL* file path alone on a line, verbatim. No bold asterisks, no quotes around it, no escaping of characters, etc.
-2. The opening fence and code language, eg: ````java
-3. The start of search block: <<<<<<< SEARCH
-4. A contiguous chunk of lines to search for in the existing source code
-5. The dividing line: =======
-6. The lines to replace into the source code
-7. The end of the replace block: >>>>>>> REPLACE
-8. The closing fence: ````
-
-Important rules:
-- Use *quadruple* backticks ```` as fences, not triple backticks
-- Every *SEARCH* section must *EXACTLY MATCH* the existing file content
-- Keep *SEARCH/REPLACE* blocks concise
-- Include enough lines in each SEARCH section to uniquely match each set of lines that need to change
-- Break large changes into a series of smaller blocks
-
-This format makes it easier to review and apply changes to the codebase.
