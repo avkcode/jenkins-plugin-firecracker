@@ -11,8 +11,13 @@ RUN apt-get update && \
 # Install Maven
 RUN apt-get install -y maven
 
-# Install the plugin we're developing
+# Install Jenkins plugin CLI
+RUN jenkins-plugin-cli --verbose
+
+# Install the plugin we're developing and make volume mount work
 COPY target/firecracker-agent.hpi /usr/share/jenkins/ref/plugins/firecracker-agent.hpi
+RUN mkdir -p /usr/share/jenkins/ref/plugins/ && \
+    chown -R jenkins:jenkins /usr/share/jenkins/ref/plugins
 
 # Skip initial setup
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false

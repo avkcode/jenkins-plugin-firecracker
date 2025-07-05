@@ -37,13 +37,22 @@ This plugin enables Jenkins to create and manage Firecracker microVMs as build a
 
 4. Add one or more agent templates with specific configurations
 
-## Building the Plugin
+## Build and Development Commands
+
+The Makefile provides several useful targets for development:
 
 ```bash
-mvn clean package
+make build       # Build plugin package
+make test        # Run unit tests
+make docker-run  # Start Jenkins with plugin in Docker
+make docker-stop # Stop Jenkins container
+make clean       # Clean build artifacts
+make run-jenkins # Run Jenkins with plugin mounted (dev mode)
 ```
 
 ## Testing
+
+> **Note:** All test commands are also available via `make test`
 
 ### Running Unit Tests
 ```bash

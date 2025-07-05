@@ -24,5 +24,41 @@ jenkins_home/
 .project
 .settings/
 
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+
+# Build artifacts
+*.hpi
+*.jpi
+*.jar
+
+# Logs
+logs/
+*.log
+
+# Local docker-compose 
+docker-compose.override.yml
+
+# Environment files
+.env
+.env.local
+
 # OS
 .DS_Store

@@ -6,18 +6,26 @@ import hudson.plugins.sshslaves.verifiers.HostKey;
 import hudson.slaves.SlaveComputer;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Rule;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.jvnet.hudson.test.JenkinsRule;
 
 import static org.junit.Assert.*;
 
-public class NonVerifyingKeyVerificationStrategyTest {
+public class NonVerifyingKeyVerificationStrategyTest extends hudson.model.AbstractDescribableImplTest {
 
+    public NonVerifyingKeyVerificationStrategyTest() {
+        super(NonVerifyingKeyVerificationStrategy.class);
+    }
+
+    @Rule
+    public JenkinsRule jenkins = new JenkinsRule();
+    
     @Mock
     private SlaveComputer mockComputer;
     
-    @Mock
-    private HostKey mockHostKey;
+    private HostKey realHostKey;
     
     @Mock
     private TaskListener mockListener;
@@ -28,17 +36,19 @@ public class NonVerifyingKeyVerificationStrategyTest {
     public void setUp() {
         MockitoAnnotations.openMocks(this);
         strategy = new NonVerifyingKeyVerificationStrategy();
+        // Create a real HostKey instance instead of mocking
+        realHostKey = new HostKey("localhost", new byte[]{1,2,3});
     }
 
     @Test
     public void testVerifyAlwaysReturnsTrue() {
         // The strategy should always return true regardless of input
-        assertTrue(strategy.verify(mockComputer, mockHostKey, mockListener));
+        assertTrue(strategy.verify(mockComputer, realHostKey, mockListener));
         
         // Test with null values to ensure it's robust
-        assertTrue(strategy.verify(null, mockHostKey, mockListener));
+        assertTrue(strategy.verify(null, realHostKey, mockListener));
         assertTrue(strategy.verify(mockComputer, null, mockListener));
-        assertTrue(strategy.verify(mockComputer, mockHostKey, null));
+        assertTrue(strategy.verify(mockComputer, realHostKey, null));
     }
 
     @Test
@@ -64,8 +74,8 @@ public class NonVerifyingKeyVerificationStrategyTest {
 
     @Test
     public void testDescriptor() {
-        // Get the descriptor
-        Descriptor<?> descriptor = strategy.getDescriptor();
+        // Get the descriptor through Jenkins instance
+        Descriptor<?> descriptor = jenkins.getInstance().getDescriptorOrDie(NonVerifyingKeyVerificationStrategy.class);
         
         // Verify the display name
         assertEquals("Non-verifying Strategy (Not secure, for testing only)", 
