@@ -36,7 +36,7 @@ public class NonVerifyingKeyVerificationStrategy extends SshHostKeyVerificationS
     }
     
     @Extension
-    public static class DescriptorImpl extends Descriptor<SshHostKeyVerificationStrategy> {
+    public static class DescriptorImpl extends SshHostKeyVerificationStrategy.SshHostKeyVerificationStrategyDescriptor {
         @Override
         public String getDisplayName() {
             return "Non-verifying Strategy (Not secure, for testing only)";

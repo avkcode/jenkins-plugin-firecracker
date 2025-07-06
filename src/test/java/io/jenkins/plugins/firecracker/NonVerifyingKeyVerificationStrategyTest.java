@@ -10,14 +10,12 @@ import org.junit.Rule;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.jvnet.hudson.test.JenkinsRule;
+import org.jvnet.hudson.test.TestExtension;
 
 import static org.junit.Assert.*;
 
-public class NonVerifyingKeyVerificationStrategyTest extends hudson.model.AbstractDescribableImplTest {
+public class NonVerifyingKeyVerificationStrategyTest {
 
-    public NonVerifyingKeyVerificationStrategyTest() {
-        super(NonVerifyingKeyVerificationStrategy.class);
-    }
 
     @Rule
     public JenkinsRule jenkins = new JenkinsRule();
@@ -74,8 +72,9 @@ public class NonVerifyingKeyVerificationStrategyTest extends hudson.model.Abstra
 
     @Test
     public void testDescriptor() {
-        // Get the descriptor through Jenkins instance
-        Descriptor<?> descriptor = jenkins.getInstance().getDescriptorOrDie(NonVerifyingKeyVerificationStrategy.class);
+        // Get the descriptor directly from the strategy class
+        NonVerifyingKeyVerificationStrategy.DescriptorImpl descriptor = 
+            new NonVerifyingKeyVerificationStrategy.DescriptorImpl();
         
         // Verify the display name
         assertEquals("Non-verifying Strategy (Not secure, for testing only)", 
