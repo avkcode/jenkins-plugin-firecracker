@@ -18,7 +18,7 @@
     <description>Runs Jenkins agents in Firecracker VMs</description>
     
     <properties>
-        <jenkins.version>2.361.4</jenkins.version>
+        <jenkins.version>2.426.3</jenkins.version>
         <java.level>8</java.level>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -82,17 +82,17 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>credentials</artifactId>
-            <version>2.6.1</version>
+            <version>1268.v3f0d043d60e9</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>ssh-credentials</artifactId>
-            <version>1.19</version>
+            <version>305.v8f4381501156</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>ssh-slaves</artifactId>
-            <version>1.33.0</version>
+            <version>2.916.vd17b_43357ce4</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
